@@ -18,6 +18,27 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  config.mysql = {
+    // database configuration
+    client: {
+      host: '127.0.0.1',
+      port: '3306',
+      user: 'root',
+      password: '123456',
+      database: 'personal',
+    },
+    // load into app, default true
+    app: true,
+    // load into agent, default false
+    agent: false,
+  };
+
+  config.security= {
+    csrf : {
+      headerName: 'x-csrf-token',// 自定义请求头
+    }
+ }
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
