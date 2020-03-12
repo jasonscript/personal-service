@@ -14,6 +14,18 @@ class HomeController extends Controller {
     const result = await ctx.service.temperature.add(ctx.request.body)
     ctx.body = { success: result }
   }
+
+  async gains () {
+    const { ctx } = this
+    const gains = await ctx.service.gains.query()
+    ctx.body = gains
+  }
+
+  async addGains () {
+    const { ctx } = this
+    const result = await ctx.service.gains.add(ctx.request.body)
+    ctx.body = { success: result }
+  }
 }
 
 module.exports = HomeController;

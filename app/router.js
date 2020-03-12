@@ -7,4 +7,6 @@ module.exports = app => {
   const { router, controller } = app;
   router.get('/temperature', controller.home.temperature)
   router.put('/temperature', controller.home.addtemperature)
+  router.get('/gains', controller.home.gains)
+  router.put('/gains', controller.home.addGains)
 };

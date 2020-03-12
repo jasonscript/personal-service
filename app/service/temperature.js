@@ -2,8 +2,9 @@ const Service = require('egg').Service
 
 class TemperatureService extends Service {
   async query () {
-    const temperatures = await this.app.mysql.select('temperature')
-    return { temperatures }
+    const sql = `select * from temperature order by time desc;`
+    const temperatures = await this.app.mysql.query(sql)
+    return temperatures
   }
 
   async add (values) {
