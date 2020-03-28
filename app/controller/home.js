@@ -26,6 +26,12 @@ class HomeController extends Controller {
     const result = await ctx.service.gains.add(ctx.request.body)
     ctx.body = { success: result }
   }
+
+  async checkGains () {
+    const { ctx, ctx: { service, request } } = this
+    const result = await service.gains.check(request.body)
+    ctx.body = result
+  }
 }
 
 module.exports = HomeController;

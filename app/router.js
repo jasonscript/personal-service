@@ -9,4 +9,5 @@ module.exports = app => {
   router.put('/temperature', controller.home.addtemperature)
   router.get('/gains', controller.home.gains)
   router.put('/gains', controller.home.addGains)
+  router.post('/gains/check', controller.home.checkGains)
 };
