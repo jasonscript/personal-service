@@ -32,6 +32,18 @@ class HomeController extends Controller {
     const result = await service.gains.check(request.body)
     ctx.body = result
   }
+
+  async todolist () {
+    const { ctx, ctx: { service } } = this
+    const todolist = await service.todolist.query()
+    ctx.body = todolist
+  }
+
+  async addTodo () {
+    const { ctx, ctx: { service, request } } = this
+    const result = await service.todolist.add(request.body)
+    ctx.body = result
+  }
 }
 
 module.exports = HomeController;

@@ -7,3 +7,16 @@ x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
   "name": "Jason",
   "channel": "Alipay"
 }
+
+GET http://127.0.0.1:7001/todolist
+
+PUT http://127.0.0.1:7001/todolist
+Content-Type: application/json
+x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
+
+{
+  "title": "特殊快件中转/派件查询条件托寄物改为托寄物类型",
+  "description": "特殊快件中转/派件查询条件托寄物改为托寄物类型",
+  "date": "2020-04-01",
+  "status": 2
+}

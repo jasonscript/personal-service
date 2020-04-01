@@ -10,4 +10,6 @@ module.exports = app => {
   router.get('/gains', controller.home.gains)
   router.put('/gains', controller.home.addGains)
   router.post('/gains/check', controller.home.checkGains)
+  router.get('/todolist', controller.home.todolist)
+  router.put('/todolist', controller.home.addTodo)
 };
