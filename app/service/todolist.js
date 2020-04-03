@@ -2,7 +2,7 @@ const Service = require('egg').Service
 
 class TodolistService extends Service {
   async query () {
-    const sql = `select * from todo_list order by date desc;`
+    const sql = `select * from todo_list order by date desc, status;`
     const todolist = await this.app.mysql.query(sql)
     return todolist
   }
