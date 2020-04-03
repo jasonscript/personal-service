@@ -20,3 +20,11 @@ x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
   "date": "2020-04-01",
   "status": 2
 }
+
+POST http://127.0.0.1:7001/todolist/2
+Content-Type: application/json
+x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
+
+{
+  "status": 2
+}

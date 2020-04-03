@@ -44,6 +44,12 @@ class HomeController extends Controller {
     const result = await service.todolist.add(request.body)
     ctx.body = result
   }
+
+  async updateTodoStatus () {
+    const { ctx, ctx: { service, params, request } } = this
+    const result = await service.todolist.updateStatus(Object.assign({ id: params.id }, request.body ))
+    ctx.body = result
+  }
 }
 
 module.exports = HomeController;
