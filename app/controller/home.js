@@ -39,6 +39,54 @@ class HomeController extends Controller {
     ctx.body = todolist
   }
 
+  validateCustomTodolist = params => {
+    const pass = {
+      success: true,
+      message: ''
+    }
+    if ('status' in params) {
+      // -1 for all
+      const { status } = params
+      if (status == null || status == -1) {
+        delete params.status
+        return pass
+      }
+      if (Array.isArray(status)) {
+        if (status.length === 0 || status.includes(-1) || status.includes('-1')) {
+          delete params.status
+          return pass
+        }
+        return pass
+      }
+      if (['number', 'string'].includes(typeof status)) {
+        params.status = [params.status]
+        return pass
+      }
+      return {
+        success: false,
+        message: 'Please check parameter "status".'
+      }
+    }
+    return true
+  }
+
+  async customTodolist () {
+    const { ctx, ctx: { service, request } } = this
+    const { body } = request
+    const validateResult = this.validateCustomTodolist(body)
+    if (validateResult.success) {
+      const todolist = await service.todolist.customQuery(body)
+      ctx.body = todolist
+    } else {
+      ctx.status = 400
+      ctx.body = {
+        success: false,
+        errorCode: 400,
+        errorMessage: validateResult.message
+      }
+    }
+  }
+
   async addTodo () {
     const { ctx, ctx: { service, request } } = this
     const result = await service.todolist.add(request.body)

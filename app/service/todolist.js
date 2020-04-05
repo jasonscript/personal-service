@@ -7,6 +7,16 @@ class TodolistService extends Service {
     return todolist
   }
 
+  async customQuery (params) {
+    let where = 'where 1=1';
+    if ('status' in params) {
+      where = `${where} and status in (${params.status.join(',')})`
+    }
+    const sql = `select * from todo_list ${where} order by date desc;`
+    const todolist = await this.app.mysql.query(sql)
+    return todolist
+  }
+
   async add (values) {
     const result = await this.app.mysql.insert('todo_list', values)
     return result.affectedRows === 1
