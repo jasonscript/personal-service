@@ -93,9 +93,14 @@ class HomeController extends Controller {
     ctx.body = result
   }
 
-  async updateTodoStatus () {
+  async updateTodo () {
     const { ctx, ctx: { service, params, request } } = this
-    const result = await service.todolist.updateStatus(Object.assign({ id: params.id }, request.body ))
+    let result = false
+    if ('status' in request.body) {
+      result = await service.todolist.updateStatus(Object.assign({ id: params.id }, request.body ))
+    } else {
+      result = await service.todolist.update({ id: params.id, values: request.body })
+    }
     ctx.body = result
   }
 }

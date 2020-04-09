@@ -27,6 +27,13 @@ class TodolistService extends Service {
     const result = await this.app.mysql.query(sql)
     return result.affectedRows === 1
   }
+
+  async update ({ id, values }) {
+    const { title, date, description } = values
+    const sql = `update todo_list set title = '${title}', date = '${date}', description = '${description}' where id = ${id};`
+    const result = await this.app.mysql.query(sql)
+    return result.affectedRows === 1
+  }
 }
 
 module.exports = TodolistService

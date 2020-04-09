@@ -13,5 +13,5 @@ module.exports = app => {
   router.get('/todolist', controller.home.todolist)
   router.post('/todolist', controller.home.customTodolist)
   router.put('/todolist', controller.home.addTodo)
-  router.post('/todolist/:id', controller.home.updateTodoStatus)
+  router.post('/todolist/:id', controller.home.updateTodo)
 };
