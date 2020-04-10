@@ -103,6 +103,12 @@ class HomeController extends Controller {
     }
     ctx.body = result
   }
+
+  async delTodo () {
+    const { ctx, ctx: { service, params } } = this
+    const result = await service.todolist.del(params.id)
+    ctx.body = result
+  }
 }
 
 module.exports = HomeController;

@@ -34,6 +34,12 @@ class TodolistService extends Service {
     const result = await this.app.mysql.query(sql)
     return result.affectedRows === 1
   }
+
+  async del (id) {
+    const sql = `delete from todo_list where id = ${id};`
+    const result = await this.app.mysql.query(sql)
+    return result.affectedRows === 1
+  }
 }
 
 module.exports = TodolistService

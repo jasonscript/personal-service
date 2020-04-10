@@ -46,3 +46,6 @@ x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
   "date": "2020-04-09",
   "description": "test desc"
 }
+
+DELETE http://127.0.0.1:7001/todolist/15
+x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
