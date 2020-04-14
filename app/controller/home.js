@@ -24,7 +24,7 @@ class HomeController extends Controller {
   async addGains () {
     const { ctx } = this
     const result = await ctx.service.gains.add(ctx.request.body)
-    ctx.body = { success: result }
+    ctx.body = result
   }
 
   async checkGains () {

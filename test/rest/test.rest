@@ -49,3 +49,15 @@ x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
 
 DELETE http://127.0.0.1:7001/todolist/15
 x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
+
+# add gains
+PUT http://127.0.0.1:7001/gains
+Content-Type: application/json
+x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
+
+{
+  "date": "2020-04-14",
+  "name": "Jason",
+  "channel": "Alipay",
+  "money": 11.05
+}

@@ -8,8 +8,26 @@ class GainsService extends Service {
   }
 
   async add (values) {
-    const result = await this.app.mysql.insert('gains', values)
-    return result.affectedRows === 1
+    const isRepeat = await this.check(values)
+    if (isRepeat) {
+      return {
+        success: false,
+        errorMessage: '重复记录'
+      }
+    }
+    try {
+      const result = await this.app.mysql.insert('gains', values)
+      return {
+        success: result.affectedRows === 1,
+        errorMessage: ''
+      }
+    } catch (err) {
+      return {
+        success: false,
+        errorMessage: err
+      }
+    }
+    
   }
 
   async check (params) {
