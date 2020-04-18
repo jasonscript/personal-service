@@ -12,6 +12,12 @@ class StepsController extends Controller {
     const result = await service.steps.check(request.body)
     ctx.body = result
   }
+
+  async add () {
+    const { ctx, ctx: { service, request } } = this
+    const result = await service.steps.add(request.body)
+    ctx.body = result
+  }
 }
 
 module.exports = StepsController

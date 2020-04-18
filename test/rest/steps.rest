@@ -10,3 +10,13 @@ x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
   "date": "2020-04-18",
   "name": "Jason"
 }
+
+PUT http://127.0.0.1:7001/steps
+Content-Type: application/json
+x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
+
+{
+  "date": "2020-04-17",
+  "name": "Jason",
+  "steps": 13000
+}
