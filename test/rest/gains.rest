@@ -1,0 +1,9 @@
+# custom query gains
+POST http://127.0.0.1:7001/gains
+Content-Type: application/json
+x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
+
+{
+  "pageSize": 10,
+  "pageNum": 1
+}

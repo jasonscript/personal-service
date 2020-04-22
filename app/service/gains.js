@@ -7,6 +7,24 @@ class GainsService extends Service {
     return gains
   }
 
+  async customQuery ({ pageSize, pageNum }) {
+    const offset = (pageNum - 1) * pageSize
+    const sql = `select * from gains order by date desc limit ${offset},${pageSize};`
+    const sqlCount = 'select count(*) as count from gains;'
+    const total = await this.app.mysql.query(sqlCount)
+    if (total[0].count === 0 || total[0].count <= offset) {
+      return {
+        total: total[0].count,
+        list: []
+      }
+    }
+    const result = await this.app.mysql.query(sql)
+    return {
+      total: total[0].count,
+      list: result
+    }
+  }
+
   async add (values) {
     const isRepeat = await this.check(values)
     if (isRepeat) {

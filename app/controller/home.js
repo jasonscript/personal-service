@@ -21,6 +21,12 @@ class HomeController extends Controller {
     ctx.body = gains
   }
 
+  async customGains () {
+    const { ctx, ctx: { service, request } } = this
+    const gains = await service.gains.customQuery(request.body)
+    ctx.body = gains
+  }
+
   async addGains () {
     const { ctx } = this
     const result = await ctx.service.gains.add(ctx.request.body)

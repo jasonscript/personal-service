@@ -8,6 +8,7 @@ module.exports = app => {
   router.get('/temperature', controller.home.temperature)
   router.put('/temperature', controller.home.addtemperature)
   router.get('/gains', controller.home.gains)
+  router.post('/gains', controller.home.customGains)
   router.put('/gains', controller.home.addGains)
   router.post('/gains/check', controller.home.checkGains)
   router.get('/todolist', controller.home.todolist)
