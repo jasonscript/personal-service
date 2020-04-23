@@ -1,0 +1,12 @@
+# query temperature
+GET http://127.0.0.1:7001/temperature
+
+# custom query temperature
+POST http://127.0.0.1:7001/temperature
+Content-Type: application/json
+x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
+
+{
+  "pageSize": 10,
+  "pageNum": 1
+}

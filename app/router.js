@@ -5,8 +5,9 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/temperature', controller.home.temperature)
-  router.put('/temperature', controller.home.addtemperature)
+  router.get('/temperature', controller.temperature.temperature)
+  router.post('/temperature', controller.temperature.customTemperature)
+  router.put('/temperature', controller.temperature.addtemperature)
   router.get('/gains', controller.home.gains)
   router.post('/gains', controller.home.customGains)
   router.put('/gains', controller.home.addGains)
