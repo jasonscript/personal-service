@@ -1,4 +1,5 @@
 const Service = require('egg').Service
+const pagedQuery = require('../utils/utils').pagedQuery
 
 class TemperatureService extends Service {
   async query () {
@@ -8,24 +9,9 @@ class TemperatureService extends Service {
   }
 
   async customQuery ({ pageSize = 10, pageNum = 1 }) {
-    const offset = pageSize * (pageNum - 1)
-    const count = await this.app.mysql.query('select count(*) as count from temperature')
-    const total = count[0].count
-    if (total === 0 || total <= offset) {
-      return {
-        total,
-        list: []
-      }
-    }
-    const temperatures = await this.app.mysql.select('temperature', {
-      orders: [['time', 'desc']],
-      limit: pageSize,
-      offset
-    })
-    return {
-      total,
-      list: temperatures
-    }
+    const params = { pageSize, pageNum, table: 'temperature', orders: [['time', 'desc']] }
+    const result = await pagedQuery(params, this.app.mysql)
+    return result
   }
 
   async add (values) {
