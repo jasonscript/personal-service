@@ -7,6 +7,12 @@ class StepsController extends Controller {
     ctx.body = steps
   }
 
+  async customSteps () {
+    const { ctx, ctx: { service, request } } = this
+    const steps = await service.steps.customQuery(request.body)
+    ctx.body = steps
+  }
+
   async check () {
     const { ctx, ctx: { service, request } } = this
     const result = await service.steps.check(request.body)

@@ -1,10 +1,17 @@
 const Service = require('egg').Service
+const pagedQuery = require('../utils/utils').pagedQuery
 
 class StepsService extends Service {
   async query () {
     const sql = `select * from steps order by date desc;`
     const steps = await this.app.mysql.query(sql)
     return steps
+  }
+
+  async customQuery ({ pageSize = 10, pageNum = 1 }) {
+    const params = { pageSize, pageNum, table: 'steps', orders: [['date', 'desc']] }
+    const result = await pagedQuery(params, this.app.mysql)
+    return result
   }
 
   async check (params) {
