@@ -1,0 +1,2 @@
+# get currentUser
+GET http://127.0.0.1:7001/currentUser

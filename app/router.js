@@ -5,6 +5,7 @@
  */
 module.exports = app => {
   const { router, controller } = app;
+  router.get('/currentUser', controller.user.currentUser)
   router.get('/temperature', controller.temperature.temperature)
   router.post('/temperature', controller.temperature.customTemperature)
   router.put('/temperature', controller.temperature.addtemperature)
