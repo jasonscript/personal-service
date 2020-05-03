@@ -1,0 +1,10 @@
+# login account
+POST http://127.0.0.1:7001/login/account
+Content-Type: application/json
+x-csrf-token: up3ZfEgMyZ1aVDiOZbmVjQwr
+
+{
+  "userName": "admin",
+  "password": "ant.design",
+  "type": "account"
+}
